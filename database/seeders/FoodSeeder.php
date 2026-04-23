@@ -18,6 +18,7 @@ class FoodSeeder extends Seeder
             ['name' =>'Crispy Burger','category_id'=>3,'restaurant_id'=>3,'price'=>40,'code'=>'KDU-1165','like_count'=>26489],
             ['name' =>'Double Chicken','category_id'=>3,'restaurant_id'=>2,'price'=>50,'code'=>'BGS-3321','like_count'=>15849],
             ['name' =>'Merjimek Corba ','category_id'=>2,'restaurant_id'=>1,'price'=>45,'code'=>'TGM-0232','like_count'=>12232],
+            ['name' =>' Sezer salad ','category_id'=>1,'restaurant_id'=>1,'price'=>60,'code'=>'TGM-0284','like_count'=>14236],
       ];
 
 
