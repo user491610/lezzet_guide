@@ -1,0 +1,37 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class FoodSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+      $foods = [
+            ['name' =>'Tombik Doner','category_id'=>2,'restaurant_id'=>1,'price'=>45,'code'=>'TGM-0032','like_count'=>32786],
+            ['name' =>'Lawash Doner','category_id'=>2,'restaurant_id'=>1,'price'=>35,'code'=>'TGM-0034','like_count'=>22839],
+            ['name' =>'Crispy Burger','category_id'=>3,'restaurant_id'=>3,'price'=>40,'code'=>'KDU-1165','like_count'=>26489],
+            ['name' =>'Double Chicken','category_id'=>3,'restaurant_id'=>2,'price'=>50,'code'=>'BGS-3321','like_count'=>15849],
+            ['name' =>'Merjimek Corba ','category_id'=>2,'restaurant_id'=>1,'price'=>45,'code'=>'TGM-0232','like_count'=>12232],
+      ];
+
+
+      foreach($foods as $food){
+          
+          \App\Models\Food::create([
+              'name'=>$food['name'],
+              'category_id'=>$food['category_id'],
+              'restaurant_id'=>$food['restaurant_id'],
+              'price'=>$food['price'],
+              'code'=>$food['code'],
+              'like_count'=>$food['like_count'],
+            ]);
+        }
+        
+    }
+}
