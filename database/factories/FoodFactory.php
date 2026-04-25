@@ -26,7 +26,6 @@ class FoodFactory extends Factory
             'price'=>fake()->randomFloat(2,20,500),
             'code'=>$this->faker->unique(2,true)->bothify('FOOD-####'),
             'like_count'=>fake()->numberBetween(0,10000),
-
         ];
     }
 }

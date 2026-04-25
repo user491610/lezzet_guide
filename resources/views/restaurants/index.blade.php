@@ -1,31 +1,25 @@
 @extends('layouts.header')
 
-<!-- @section('title', 'Restaurants') -->
+@section('main-content')
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4">Our Restaurants</h2>
+    <div class="row">
+        @foreach($restaurants as $r)
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <img src="https://loremflickr.com/400/250/restaurant?lock={{ $r->id }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
 
-@section('content')
-
-<h2 class="mb-4">Restaurants</h2>
-
-<!-- <a href="/restaurants/create" class="btn btn-warning mb-3">+ Add</a> -->
-
-<div class="row">
-    @foreach($restaurants as $r)
-    <div class="col-md-4 mb-4">
-        <div class="card shadow">
-            <div class="card-body">
-                <h5>{{ $r->name }}</h5>
-                <p>{{ $r->address }}</p>
-
-                <p>⭐ {{ $r->rating }}</p>
-                <p>{{ $r->phone_number }}</p>
-
-                <a href="/restaurants/{{ $r->id }}" class="btn btn-dark w-100">
-                    View Menu
-                </a>
+                        <h5 class="card-title fw-bold text-primary">{{ $r->name }}</h5>
+                        <p class="text-muted mb-1"><i class="bi bi-geo-alt"></i> {{ $r->address }}</p>
+                        <p class="text-warning small mb-3">
+                            <i class="bi bi-star-fill"></i> {{ $r->rating }}/5
+                        </p>
+                        <a href="/restaurants/{{$r->id}}" class="btn btn-dark w-100 rounded-pill">View Menu</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
-
 @endsection

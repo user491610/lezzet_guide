@@ -14,5 +14,7 @@ Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'inde
 
 Route::get('/categories/show/{id}', [App\Http\Controllers\CategoryController::class, 'categoriesShow']);
 
-Route::get('/restaurants', [App\Http\Controllers\RestaurantController::class, 'restaurantIndex'])->name('restaurants.index');
+Route::get('/restaurants', [App\Http\Controllers\RestaurantController::class, 'index'])->name('restaurants.index');
+
+Route::get('/restaurants/{id}', [App\Http\Controllers\RestaurantController::class, 'show'])->name('restaurants.show');
 

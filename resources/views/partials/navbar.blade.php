@@ -66,7 +66,7 @@
                     <a class="nav-link active" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/restaurants">Restaurants</a>
+                    <a class="nav-link" href="{{route('restaurants.index')}}">Restaurants</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('foods.index')}}">Foods</a>
