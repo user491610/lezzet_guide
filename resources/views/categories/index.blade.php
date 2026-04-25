@@ -1,26 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
-<!-- @section('title', 'Categories') -->
+@section('title', 'Categories')
 
-@section('content')
-
-<h2 class="mb-4">Categories</h2>
-
-<div class="row">
-    @foreach($categories as $category)
-    <div class="col-md-3 mb-4">
-        <div class="card shadow text-center">
-            <div class="card-body">
-                <h5>{{ $category->name }}</h5>
-
-                <a href="{{ url('/categories/' . $category->id) }}" 
-                   class="btn btn-dark w-100 mt-2">
-                   View Foods
-                </a>
+@section('main-content')
+<body class="">
+    
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Categories</h2>
+    
+    <div class="row">
+        @forelse($categories as $cat)
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold text-uppercase">{{ $cat->name }}</h5>
+                        <p class="text-muted small">Delicious foods waiting for you.</p>
+                        <a href="/categories/{{ $cat->id }}" class="btn btn-warning btn-sm w-100">
+                            See Foods
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
+        @empty
+            <div class="col-12 text-center">
+                <p class="alert alert-info">No categories found in database.</p>
+            </div>
+        @endforelse
     </div>
-    @endforeach
 </div>
-
+</body>
 @endsection

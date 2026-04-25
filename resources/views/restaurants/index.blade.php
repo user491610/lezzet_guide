@@ -6,7 +6,7 @@
 
 <h2 class="mb-4">Restaurants</h2>
 
-<a href="/restaurants/create" class="btn btn-warning mb-3">+ Add</a>
+<!-- <a href="/restaurants/create" class="btn btn-warning mb-3">+ Add</a> -->
 
 <div class="row">
     @foreach($restaurants as $r)

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MenuHub</title>
+    <title>Lezzet guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
@@ -43,10 +43,10 @@
             text-align: center;
         }
 
-        .card:hover {
+        /* .card:hover {
             transform: scale(1.05);
             transition: 0.3s;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -66,13 +66,13 @@
                     <a class="nav-link active" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('restaurants.index')}}">Restaurants</a>
+                    <a class="nav-link" href="/restaurants">Restaurants</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('foods.index')}}">Foods</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
+                     <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
                 </li>
             </ul>
         </div>
