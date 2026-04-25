@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\FoodSeeder::class,
             \Database\Seeders\CategorySeeder::class 
         ]);
+        \App\Models\Food::factory(40)->create();
     }
 }

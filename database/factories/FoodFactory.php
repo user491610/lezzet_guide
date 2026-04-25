@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Food;
+use App\Models\Category;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +20,13 @@ class FoodFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'category_id'=>Category::inRandomOrder()->first()->id?? 1,
+            'restaurant_id'=>Restaurant::inRandomOrder()->first()->id?? 1,
+            'name'=>fake()->words(2,true),
+            'price'=>fake()->randomFloat(2,20,500),
+            'code'=>$this->faker->unique(2,true)->bothify('FOOD-####'),
+            'like_count'=>fake()->numberBetween(0,10000),
+
         ];
     }
 }
