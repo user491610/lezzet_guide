@@ -90,9 +90,7 @@ a>
     <div class="row">
         @foreach($foods as $food)
         <div class="col-md-3 mb-4">
-            <div class="card h-100 border-0 shadow-sm overflow-
-
-hidden" style="border-radius: 20px;">
+            <div class="card h-100 border-0 shadow-sm overflow-hidden" style="border-radius: 20px;">
                 @php
                     // Kategoriýa adyna görä surat (pizza.jpg, beverages.jpg we s.m.)
                     $foodImg = 'images/' . strtolower($food->category->name) . '.jpg';
@@ -127,9 +125,9 @@ hidden" style="border-radius: 20px;">
         background-color: #ffc107 !important;
         transform: translateY(-10px);
     }
-    .card {
+    /* .card {
         transition: transform 0.3s ease;
-    }
+    } */
     .card:hover {
         transform: scale(1.02);
     }
