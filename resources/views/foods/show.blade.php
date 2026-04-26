@@ -49,7 +49,7 @@
                         <div class="col-4">
                             <div class="p-3 bg-light rounded-3">
                                 <i class="bi bi-heart-fill text-danger fs-3"></i>
-                                <p class="mb-0 mt-2 fw-bold">{{ $food->like_count }} like_count</p>
+                                <p class="mb-0 mt-2 fw-bold">{{ $food->like_count }} likes</p>
                             </div>
                         </div>
                         <div class="col-4">

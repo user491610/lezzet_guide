@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
     {
      
         $categories = [
-            'Appetizers/Starter',
+            'Appetizers',
             'Main Course',
             'Fast food',
             'Desserts',

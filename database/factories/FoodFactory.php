@@ -23,7 +23,7 @@ class FoodFactory extends Factory
             'category_id'=>Category::inRandomOrder()->first()->id?? 1,
             'restaurant_id'=>Restaurant::inRandomOrder()->first()->id?? 1,
             'name'=>fake()->words(2,true),
-            'price'=>fake()->randomFloat(2,20,500),
+            'price'=>fake()->randomNumber(2,20,500),
             'code'=>$this->faker->unique(2,true)->bothify('FOOD-####'),
             'like_count'=>fake()->numberBetween(0,10000),
         ];

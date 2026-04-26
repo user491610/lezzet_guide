@@ -8,9 +8,14 @@ use \App\Models\Category;
 use \App\Models\Restaurant;
 class FoodController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $foods = Food::with(['restaurant', 'category'])->get();
+
+        $query = Food::query();
+        if ($request->has('category_id')){
+            $query->where('category_id',$request->category_id);
+        }
+        $foods = $query->with(['restaurant', 'category'])->get();
         return view('foods.index', compact('foods'));
     }   
 

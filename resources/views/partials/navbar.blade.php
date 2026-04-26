@@ -43,41 +43,52 @@
             text-align: center;
         }
 
-        /* .card:hover {
-            transform: scale(1.05);
-            transition: 0.3s;
-        } */
+       
     </style>
 </head>
 <body>
 
-<!-- 🔝 Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Lezzet Guide</a>
+        <a class="navbar-brand fw-bold fs-4 text-warning" href="{{route('home')}}">
+            <i class="bi "></i> Lezzet Guide
+        </a>
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
+
         </button>
 
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto gap-2">
+                
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link px-3 rounded-pill {{ Route::is('home') ? 'active fw-bold text-warning bg-secondary bg-opacity-25' : '' }}" 
+                       href="/">Home</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('restaurants.index')}}">Restaurants</a>
+                    <a class="nav-link px-3 rounded-pill {{ Request::is('restaurants*') ? 'active fw-bold text-warning bg-secondary bg-opacity-25' : '' }}" 
+                       href="/restaurants">Restaurants</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('foods.index')}}">Foods</a>
+                    <a class="nav-link px-3 rounded-pill {{ Request::is('foods*') ? 'active fw-bold text-warning bg-secondary bg-opacity-25' : '' }}" 
+
+                       href="/foods">Foods</a>
                 </li>
+
                 <li class="nav-item">
-                     <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
+                    <a class="nav-link px-3 rounded-pill {{ Request::is('categories*') ? 'active fw-bold text-warning bg-secondary bg-opacity-25' : '' }}" 
+                       href="/categories">Categories</a>
                 </li>
+
             </ul>
         </div>
+
     </div>
 </nav>
+
 
 </body>
 </html>

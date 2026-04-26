@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'home']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Route::get('/foods', [App\Http\Controllers\FoodController::class, 'index'])->name('foods.index');
 
@@ -12,7 +12,7 @@ Route::get('/foods/{id}', [App\Http\Controllers\FoodController::class, 'show'])-
 
 Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
 
-Route::get('/categories/show/{id}', [App\Http\Controllers\CategoryController::class, 'categoriesShow']);
+Route::get('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'categoriesShow']);
 
 Route::get('/restaurants', [App\Http\Controllers\RestaurantController::class, 'index'])->name('restaurants.index');
 

@@ -16,7 +16,8 @@ class RestaurantController extends Controller
     
     public function show($id){
         $restaurant = Restaurant::with('foods')->findOrFail($id);
-        return view('restaurants.show',compact('restaurant'));
+        $foods = \App\Models\Food::where('restaurant_id',$id)->get();
+        return view('restaurants.show',compact('restaurant','foods'));
         
 
 

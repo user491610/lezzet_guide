@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function categoriesShow($id) 
     {   
         
-        $category = \App\Models\Category::where('id',$id)->firstOrFail();;
+        $category = \App\Models\Category::with('foods.restaurant')->firstOrFail($id);;
 
         return view('categories.show',compact('category'));
     }  
