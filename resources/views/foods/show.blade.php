@@ -25,15 +25,31 @@
                         </div>
                     </div>
 
+                    @php
+    
+                $foodImg = 'images/' . strtolower($food->category->name) . '.jpg';
+    
+                // Eger surat ýok bolsa, default suraty ulanarys
+                 if (!file_exists(public_path($foodImg))) {
+                    $foodImg = 'images/default.jpg';
+
+                        }
+                    @endphp
+
+                <div class="mb-4">
+                     <img src="{{ asset($foodImg) }}" 
+                    class="img-fluid w-100 shadow-sm" 
+                    style="max-height: 400px; object-fit: cover; border-radius: 25px;" 
+                    alt="{{ $food->name }}">
+                </div>
+
                     <hr class="my-4">
-                        <div class="">
-                            <img src="" alt="">
-                        </div>
+                        
                     <div class="row text-center mt-4">
                         <div class="col-4">
                             <div class="p-3 bg-light rounded-3">
                                 <i class="bi bi-heart-fill text-danger fs-3"></i>
-                                <p class="mb-0 mt-2 fw-bold">{{ $food->like_count }} Likes</p>
+                                <p class="mb-0 mt-2 fw-bold">{{ $food->like_count }} like_count</p>
                             </div>
                         </div>
                         <div class="col-4">

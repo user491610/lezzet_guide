@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Restaurant;
+use App\Models\Category;
+use App\Models\Food;
 
 class HomeController extends Controller
 {
-    public function home() {
+    public function home()
+    {
+        $restaurants = Restaurant::inRandomOrder()->take(4)->get();
+        $categories = Category::take(5)->get();
+        $foods = Food::orderBy('like_count', 'desc')->take(4)->get();
 
-        $appName = "LezzetGuide";
-        
-        
-        return view('home.index', compact('appName'));
+        return view('home.index', compact('restaurants', 'categories', 'foods'));
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->float('rating');
+            $table->float('rating'); 
             $table->string('phone_number')->unique();
             $table->timestamps();
         });

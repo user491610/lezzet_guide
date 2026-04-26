@@ -1,114 +1,136 @@
-
 @extends('layouts.header')
 
-    @section('main-content')
-    <!DOCTYPE html>
-    <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MenuHub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('title', 'Home - Lezzet Guide')
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('main-content')
 
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark text-white rounded-5 shadow-lg" 
+     style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ 
 
-        .hero {
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 60px;
-            font-weight: bold;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-top: 15px;
-        }
-
-        .section-title {
-            margin: 60px 0 30px;
-            text-align: center;
-        }
-
-        /* .card:hover {
-            transform: scale(1.05);
-            transition: 0.3s;
-        } */
-    </style>
-</head>
-<body>
-
-
-<section class="hero">
-    <div>
-        <h1>Welcome to Lezzet Guide</h1>
-        <p>Discover restaurants & explore delicious meals</p>
-        <!-- <a href="#" class="btn btn-warning mt-3 px-4 py-2">Explore Now</a> -->
+asset('images/hero_bg.jpg') }}') no-repeat center center; background-size: cover;">
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-bold">Lezzet Guide </h1>
+        <p class="lead fw-normal text-light">Your favourite restaurants and meals are in here</p>
+        <a class="btn btn-warning btn-lg rounded-pill fw-bold px-5 py-3 shadow" href="/restaurants">Explore Now</a>
     </div>
-</section>
 
-<!-- Restaurants -->
-<div class="container">
-    <h2 class="section-title">Popular Restaurants</h2>
+</div>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h2 class="fw-bold m-0">Best Restaurants</h2>
+            <p class="text-muted mb-0">High-rated places you must visit</p>
+        </div>
+        <a href="/restaurants" class="btn btn-outline-primary rounded-pill btn-sm">View All</
+
+a>
+    </div>
 
     <div class="row">
-        @for($i = 0; $i < 3; $i++)
+        @foreach($restaurants as $r)
         <div class="col-md-4 mb-4">
-            <div class="card shadow">
-                <!-- <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee" class="card-img-top"> -->
+            <div class="card h-100 shadow-sm border-0 overflow-hidden" style="border-radius: 20px;">
+                @php
+                    
+                    $resImg = 'images/restaurant_' . $r->id . '.jpg';
+                    if (!file_exists(public_path($resImg))) {
+                        $resImg = 'images/restaurant_default.jpg';
+                    }
+                @endphp
+                
+                <div class="position-relative">
+                    <img src="{{ asset($resImg) }}" class="card-img-top" height="220" style="object-fit:cover;">
+                    <div class="position-absolute top-0 end-0 m-3">
+                        <span class="badge bg-white text-dark shadow-sm px-3 py-2 rounded-pill">
+                            ⭐ {{ $r->rating }}
+                        </span>
+                    </div>
+                </div>
+
                 <div class="card-body">
-                    <h5 class="card-title">Restaurant Name</h5>
-                    <p class="card-text">Best foods & great atmosphere</p>
-                    <a href="#" class="btn btn-dark w-100">View Menu</a>
+                    <h5 class="fw-bold mb-1">{{ $r->name }}</h5>
+                    <p class="text-muted small mb-3"><i class="bi bi-geo-alt"></i> {{ $r->address }}</p>
+
+                    <a href="/restaurants/{{ $r->id }}" class="btn btn-dark w-100 rounded-pill">View Menu</a>
                 </div>
             </div>
         </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 
-<!-- Foods -->
-<div class="container">
-    <h2 class="section-title">Popular Foods 🍔</h2>
+<div class="container mt-5 bg-light p-5 rounded-5 shadow-sm">
+    <h3 class="fw-bold mb-4 text-center">Browse by Category</h3>
 
+    <div class="row justify-content-center">
+        @foreach($categories as $cat)
+        <div class="col-md-2 col-6 mb-3 text-center">
+            <a href="/categories/show/{{ $cat->id }}" class="text-decoration-none">
+                <div class="card border-0 shadow-sm py-3 category-card h-100" style="border-radius: 20px; transition: 0.3s;">
+                    <div class="fs-1 mb-2">
+
+                        @if(strtolower($cat->name) == 'pizza') 🍕 
+                        @elseif(strtolower($cat->name) == 'beverages') 🥤 
+                        @elseif(strtolower($cat->name) == 'burger') 🍔
+                        @elseif(strtolower($cat->name) == 'dessert') 🍰
+                        @else 🍲 @endif
+                    </div>
+                    <h6 class="text-dark fw-bold mb-0">{{ $cat->name }}</h6>
+
+                </div>
+            </a>
+        </div>
+        @endforeach
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <h3 class="fw-bold mb-4">Most Liked Foods</h3>
     <div class="row">
-        @for($i = 0; $i < 4; $i++)
+        @foreach($foods as $food)
         <div class="col-md-3 mb-4">
-            <div class="card shadow">
-                <!-- <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" class="card-img-top"> -->
+            <div class="card h-100 border-0 shadow-sm overflow-
+
+hidden" style="border-radius: 20px;">
+                @php
+                    // Kategoriýa adyna görä surat (pizza.jpg, beverages.jpg we s.m.)
+                    $foodImg = 'images/' . strtolower($food->category->name) . '.jpg';
+                    if (!file_exists(public_path($foodImg))) {
+                        $foodImg = 'images/default.jpg';
+                    }
+                @endphp
+
+
+                <div class="position-relative">
+                    <img src="{{ asset($foodImg) }}" class="card-img-top" height="180" style="object-fit:cover;">
+                    <div class="position-absolute bottom-0 start-0 m-2">
+                        <span class="badge bg-warning text-dark shadow fw-bold">{{ $food->price }} TMT</span>
+                    </div>
+                </div>
+
                 <div class="card-body text-center">
-                    <h6 class="card-title">Burger</h6>
-                    <p class="text-muted">$10</p>
+                    <h6 class="fw-bold mb-1">{{ $food->name }}</h6>
+                    <p class="text-danger small mb-0"><i class="bi bi-heart-fill"></i> {{ $food->like_count }} like_count</p>
                 </div>
             </div>
         </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 
-<!--  Footer -->
-<footer class="bg-dark text-white text-center p-3 mt-5">
-    <p class="mb-0">© 2026 MenuHub - All rights reserved</p>
-</footer>
+@endsection
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
-</html>
-
-@endsection()
+<style>
+    .category-card:hover {
+        background-color: #ffc107 !important;
+        transform: translateY(-10px);
+    }
+    .card {
+        transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: scale(1.02);
+    }
+</style>
