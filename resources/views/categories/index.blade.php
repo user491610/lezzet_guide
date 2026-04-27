@@ -6,20 +6,16 @@
 
 <div class="container mt-5">
     <div class="text-center mb-5">
-        <h2 class="fw-bold">Explore by Category 🍽️</h2>
+        <h2 class="fw-bold">Explore by Category </h2>
         <p class="text-muted">Choose what you're craving today</p>
     </div>
 
     <div class="row">
-
         @foreach($categories as $cat)
         <div class="col-md-4 col-sm-6 mb-4">
-         
             <a href="/foods?category_id={{ $cat->id }}" class="text-decoration-none">
                 <div class="card border-0 shadow-sm category-main-card h-100 overflow-hidden" style="border-radius: 20px;">
-                    
-
-                    @php
+                        @php
                         // Kategoriýa adyna görä surat (beverages.jpg, pizza.jpg...)
                         $catImg = 'images/' . strtolower($cat->name) . '.jpg';
                         
