@@ -15,7 +15,7 @@ class FoodController extends Controller
         if ($request->has('category_id')){
             $query->where('category_id',$request->category_id);
         }
-        $foods = $query->with(['restaurant', 'category'])->get();
+        $foods = $query->with(['restaurant', 'category'])->paginate(12);
         return view('foods.index', compact('foods'));
     }   
 

@@ -13,12 +13,14 @@ class FoodSeeder extends Seeder
     public function run(): void
     {
       $foods = [
-            ['name' =>'Tombik Doner','category_id'=>2,'restaurant_id'=>1,'price'=>45,'code'=>'TGM-0032','like_count'=>32786],
-            ['name' =>'Lawash Doner','category_id'=>2,'restaurant_id'=>1,'price'=>35,'code'=>'TGM-0034','like_count'=>22839],
+            ['name' =>'Tombik Doner','category_id'=>3,'restaurant_id'=>1,'price'=>45,'code'=>'TGM-0032','like_count'=>32786],
+            ['name' =>'Lawash Doner','category_id'=>3,'restaurant_id'=>1,'price'=>35,'code'=>'TGM-0034','like_count'=>22839],
             ['name' =>'Crispy Burger','category_id'=>3,'restaurant_id'=>3,'price'=>40,'code'=>'KDU-1165','like_count'=>26489],
             ['name' =>'Double Chicken','category_id'=>3,'restaurant_id'=>2,'price'=>50,'code'=>'BGS-3321','like_count'=>15849],
             ['name' =>'Merjimek Corba ','category_id'=>2,'restaurant_id'=>1,'price'=>45,'code'=>'TGM-0232','like_count'=>12232],
             ['name' =>' Sezer salad ','category_id'=>1,'restaurant_id'=>1,'price'=>60,'code'=>'TGM-0284','like_count'=>14236],
+            ['name' =>' Goşa çynar ','category_id'=>5,'restaurant_id'=>7,'price'=>6,'code'=>'RTS-5667','like_count'=>2365],
+            ['name' =>' Kola-çynar 1L ','category_id'=>5,'restaurant_id'=>7,'price'=>10,'code'=>'TGM-3244','like_count'=>9856],
       ];
 
 

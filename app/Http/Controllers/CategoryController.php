@@ -13,7 +13,7 @@ class CategoryController extends Controller
     // }
     public function index()
     {
-        $categories = \App\Models\Category::all();
+        $categories = \App\Models\Category::distinct()->get();
         return view('categories.index', compact('categories'));
     }
     
